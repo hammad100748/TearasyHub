@@ -10,12 +10,19 @@ import { RegisterComponent } from './components/register/register.component';
 import {RegistrationService} from "./services/registration.service";
 import { EqualValidatorDirective } from './equal-validator.directive';
 
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/observable/throw';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     RegisterComponent,
-    EqualValidatorDirective
+    EqualValidatorDirective,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +32,6 @@ import { EqualValidatorDirective } from './equal-validator.directive';
   ],
   providers: [RegistrationService],
   bootstrap: [AppComponent],
-   
+
 })
 export class AppModule { }

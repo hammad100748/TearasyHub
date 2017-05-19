@@ -7,6 +7,7 @@ import {RouterModule,Routes} from '@angular/router';
 import {NgModule} from "@angular/core";
 import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
 import {RegisterComponent} from "./components/register/register.component";
+import {RegisterUserComponent} from "./components/register-user/register-user.component";
 
 
 
@@ -14,6 +15,7 @@ const appRoutes: Routes=[
   {path:'',component:HomeComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
+  {path:'registeruser',component:RegisterUserComponent},
   // {path:'employee/:id',component:PassDataComponentComponent},
   // If wrong link enters this will execute
   {path:'**',component:PageNotFoundComponent}

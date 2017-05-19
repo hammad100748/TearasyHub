@@ -1,0 +1,53 @@
+<div class="container">
+  <h1>Add User</h1>
+  <form #f="ngForm" novalidate (ngSubmit)="save(f.value, f.valid)">
+    <div ngModelGroup="profile">
+    <div class="form-group">
+      <label >First Name</label>
+      <input type="text" class="form-control" name="firstname" ngModel
+             required minlength="2" maxlength="10" #firstname="ngModel">
+      <small [hidden]="firstname.valid || (firstname.pristine && !f.submitted)" class="text-danger">
+        First Name is required (minimum 2 characters).
+      </small>
+      <!--<pre *ngIf="username.errors" class="margin-20">{{ username.errors | json }}</pre>-->
+    </div>
+    <div class="form-group">
+      <label >Last Name</label>
+      <input type="text" class="form-control" name="lastname" ngModel
+             required minlength="2" maxlength="10" #lastname="ngModel">
+      <small [hidden]="lastname.valid || (lastname.pristine && !f.submitted)" class="text-danger">
+        Last Name is required (minimum 2 characters).
+      </small>
+      <!--<pre *ngIf="username.errors" class="margin-20">{{ username.errors | json }}</pre>-->
+    </div>
+    </div>
+    <div class="form-group">
+      <label >Email</label>
+      <input type="email" class="form-control" name="email" ngModel
+             required  #email="ngModel" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$">
+      <small [hidden]="email.valid || (email.pristine && !f.submitted)" class="text-danger">
+        Email is required and format should be <i>john@doe.com</i>.
+      </small>
+      <!--<pre *ngIf="email.errors" class="margin-20">{{ email.errors | json }}</pre>-->
+    </div>
+    <div class="form-group">
+      <label >Password</label>
+      <input type="password" class="form-control" name="password" ngModel
+             required validateEqual="confirmPassword" reverse="true" #password="ngModel">
+      <small [hidden]="password.valid || (password.pristine && !f.submitted)" class="text-danger">
+        Password is required
+      </small>
+      <!--<pre *ngIf="password.errors" class="margin-20">{{ password.errors | json }}</pre>-->
+    </div>
+    <div class="form-group">
+      <label>Retype password</label>
+      <input type="password" class="form-control" name="password_confirm" ngModel
+             required validateEqual="password" reverse="false" #confirmPassword="ngModel">
+      <small [hidden]="confirmPassword.valid || (confirmPassword.pristine && !f.submitted)" class="text-danger">
+        Password mismatch
+      </small>
+      <!--<pre *ngIf="confirmPassword.errors" class="margin-20">{{ confirmPassword.errors | json }}</pre>-->
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>

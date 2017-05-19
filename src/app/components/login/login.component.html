@@ -1,30 +1,28 @@
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-  <div class="container" style="padding: 15px;">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header text-center" style="margin-left: 43%">
-      <a class="navbar-brand" routerLink="">Company logo</a>
+<div class="container">
+  <h1>Login Admin</h1>
+  <form #f="ngForm" novalidate (ngSubmit)="login(f.value, f.valid)">
+    <div class="form-group">
+      <label >Email</label>
+      <input type="email" class="form-control" name="email" ngModel
+             required  #email="ngModel" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$">
+      <small [hidden]="email.valid || (email.pristine && !f.submitted)" class="text-danger">
+        Email is required and format should be <i>john@doe.com</i>.
+      </small>
+      <!--<pre *ngIf="email.errors" class="margin-20">{{ email.errors | json }}</pre>-->
+    </div>
+    <div class="form-group">
+      <label >Password</label>
+      <input type="password" class="form-control" name="pass" ngModel
+
+             required validateEqual="confirmPassword" reverse="true" #password="ngModel">
+      <small [hidden]="password.valid || (password.pristine && !f.submitted)" class="text-danger">
+        Password is required
+      </small>
+      <!--<pre *ngIf="password.errors" class="margin-20">{{ password.errors | json }}</pre>-->
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="alert alert-error" *ngIf="errorMsg">{{errorMsg}}</div>
 
-    <!-- /.navbar-collapse -->
-  </div>
-  <!-- /.container-fluid -->
-</nav>
-
-<section class="bg-primary1" >
-  <div class="container">
-    <div class="row">
-      <div class="login-page">
-        <div class="form">
-          <form class="login-form">
-            <input type="text" placeholder="username"/>
-            <input type="password" placeholder="password"/>
-            <button>Sign In</button>
-            <!--<p class="message">Not registered? <a routerLink="/register">Create an account</a></p>-->
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
